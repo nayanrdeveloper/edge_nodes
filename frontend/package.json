@@ -19,13 +19,9 @@
     "build": "npx @tailwindcss/cli -i ./src/index.css -o ./src/output.css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.{js,jsx,css,md}\""
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "format": "prettier --write \"src/**/*.{js,jsx,css,md}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix"
   },
   "browserslist": {
     "production": [
@@ -41,6 +37,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.8.1"
   }
 }
