@@ -1,11 +1,19 @@
 import { useState } from 'react';
 import { BaseNode } from './BaseNode';
 import { Label, Input, Select } from '../components/FormElements';
-import { NODE_LABELS, DEFAULT_VALUES, OUTPUT_TYPES, FIELD_LABELS, OUTPUT_TYPE_OPTIONS } from '../constants/nodeConstants';
+import {
+  NODE_LABELS,
+  DEFAULT_VALUES,
+  OUTPUT_TYPES,
+  FIELD_LABELS,
+  OUTPUT_TYPE_OPTIONS,
+} from '../constants/nodeConstants';
 import { getOutputNodeHandles } from '../constants/nodeHandles';
 
 export const OutputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', DEFAULT_VALUES.OUTPUT_NAME_PREFIX));
+  const [currName, setCurrName] = useState(
+    data?.outputName || id.replace('customOutput-', DEFAULT_VALUES.OUTPUT_NAME_PREFIX)
+  );
   const [outputType, setOutputType] = useState(data.outputType || OUTPUT_TYPES.TEXT);
 
   const handleNameChange = (e) => {
@@ -23,21 +31,19 @@ export const OutputNode = ({ id, data }) => {
       <div>
         <Label>
           {FIELD_LABELS.NAME}
-          <Input
-            type="text"
-            value={currName}
-            onChange={handleNameChange}
-          />
+          <Input type="text" value={currName} onChange={handleNameChange} />
         </Label>
         <Label>
           {FIELD_LABELS.TYPE}
           <Select value={outputType} onChange={handleTypeChange}>
-            {OUTPUT_TYPE_OPTIONS.map(opt => (
-              <option key={opt} value={opt}>{opt}</option>
+            {OUTPUT_TYPE_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </Select>
         </Label>
       </div>
     </BaseNode>
   );
-}
+};

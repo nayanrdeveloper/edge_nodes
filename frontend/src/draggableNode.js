@@ -1,6 +1,6 @@
 export const DraggableNode = ({ type, label }) => {
   const onDragStart = (event, nodeType) => {
-    const appData = { nodeType }
+    const appData = { nodeType };
     event.target.style.cursor = 'grabbing';
     event.dataTransfer.setData('application/reactflow', JSON.stringify(appData));
     event.dataTransfer.effectAllowed = 'move';
@@ -16,4 +16,4 @@ export const DraggableNode = ({ type, label }) => {
       <span className="text-slate-800 text-sm font-medium">{label}</span>
     </div>
   );
-};  
+};

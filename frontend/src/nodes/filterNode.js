@@ -5,18 +5,18 @@ import { NODE_LABELS, DEFAULT_VALUES, FIELD_LABELS } from '../constants/nodeCons
 import { getFilterNodeHandles } from '../constants/nodeHandles';
 
 export const FilterNode = ({ id, data }) => {
-    const [condition, setCondition] = useState(data?.condition || DEFAULT_VALUES.FILTER_CONDITION);
+  const [condition, setCondition] = useState(data?.condition || DEFAULT_VALUES.FILTER_CONDITION);
 
-    const handles = getFilterNodeHandles(id);
+  const handles = getFilterNodeHandles(id);
 
-    return (
-        <BaseNode id={id} label={NODE_LABELS.FILTER} handles={handles}>
-            <div>
-                <Label>
-                    {FIELD_LABELS.CONDITION}
-                    <Input type="text" value={condition} onChange={(e) => setCondition(e.target.value)} />
-                </Label>
-            </div>
-        </BaseNode>
-    );
-}
+  return (
+    <BaseNode id={id} label={NODE_LABELS.FILTER} handles={handles}>
+      <div>
+        <Label>
+          {FIELD_LABELS.CONDITION}
+          <Input type="text" value={condition} onChange={(e) => setCondition(e.target.value)} />
+        </Label>
+      </div>
+    </BaseNode>
+  );
+};

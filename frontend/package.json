@@ -18,7 +18,8 @@
     "start": "concurrently \"npx @tailwindcss/cli -i ./src/index.css -o ./src/output.css --watch\" \"react-scripts start\"",
     "build": "npx @tailwindcss/cli -i ./src/index.css -o ./src/output.css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,md}\""
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "prettier": "^3.8.1"
   }
 }

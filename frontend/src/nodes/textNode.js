@@ -2,8 +2,17 @@ import { useState, useEffect, useMemo } from 'react';
 import { useUpdateNodeInternals } from 'reactflow';
 import { BaseNode } from './BaseNode';
 import { Label, AutoResizeTextarea } from '../components/FormElements';
-import { NODE_LABELS, DEFAULT_VALUES, FIELD_LABELS, TEXT_NODE_STYLE } from '../constants/nodeConstants';
-import { getTextNodeHandles, extractVariables, getDynamicTargetHandles } from '../constants/nodeHandles';
+import {
+  NODE_LABELS,
+  DEFAULT_VALUES,
+  FIELD_LABELS,
+  TEXT_NODE_STYLE,
+} from '../constants/nodeConstants';
+import {
+  getTextNodeHandles,
+  extractVariables,
+  getDynamicTargetHandles,
+} from '../constants/nodeHandles';
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || DEFAULT_VALUES.TEXT_NODE);

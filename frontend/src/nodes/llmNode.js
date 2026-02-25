@@ -12,4 +12,4 @@ export const LLMNode = ({ id, data }) => {
       </div>
     </BaseNode>
   );
-}
+};

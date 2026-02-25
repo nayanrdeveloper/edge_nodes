@@ -41,20 +41,15 @@ const selector = (state) => ({
 export const PipelineUI = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const {
-    nodes,
-    edges,
-    getNodeID,
-    addNode,
-    onNodesChange,
-    onEdgesChange,
-    onConnect
-  } = useStore(selector, shallow);
+  const { nodes, edges, getNodeID, addNode, onNodesChange, onEdgesChange, onConnect } = useStore(
+    selector,
+    shallow
+  );
 
   const getInitNodeData = (nodeID, type) => {
     let nodeData = { id: nodeID, nodeType: `${type}` };
     return nodeData;
-  }
+  };
 
   const onDrop = useCallback(
     (event) => {
@@ -109,13 +104,17 @@ export const PipelineUI = () => {
           nodeTypes={nodeTypes}
           proOptions={proOptions}
           snapGrid={[gridSize, gridSize]}
-          connectionLineType='smoothstep'
+          connectionLineType="smoothstep"
         >
           <Background color="#cbd5e1" gap={gridSize} size={2} />
           <Controls />
-          <MiniMap nodeStrokeColor="#e2e8f0" nodeColor="#f4f6f8" maskColor="rgba(244, 246, 248, 0.7)" />
+          <MiniMap
+            nodeStrokeColor="#e2e8f0"
+            nodeColor="#f4f6f8"
+            maskColor="rgba(244, 246, 248, 0.7)"
+          />
         </ReactFlow>
       </div>
     </>
-  )
-}
+  );
+};

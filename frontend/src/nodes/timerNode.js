@@ -5,18 +5,18 @@ import { NODE_LABELS, DEFAULT_VALUES, FIELD_LABELS } from '../constants/nodeCons
 import { getTimerNodeHandles } from '../constants/nodeHandles';
 
 export const TimerNode = ({ id, data }) => {
-    const [delay, setDelay] = useState(data?.delay || DEFAULT_VALUES.TIMER_DELAY);
+  const [delay, setDelay] = useState(data?.delay || DEFAULT_VALUES.TIMER_DELAY);
 
-    const handles = getTimerNodeHandles(id);
+  const handles = getTimerNodeHandles(id);
 
-    return (
-        <BaseNode id={id} label={NODE_LABELS.TIMER} handles={handles}>
-            <div>
-                <Label>
-                    {FIELD_LABELS.DELAY}
-                    <Input type="number" value={delay} onChange={(e) => setDelay(e.target.value)} />
-                </Label>
-            </div>
-        </BaseNode>
-    );
-}
+  return (
+    <BaseNode id={id} label={NODE_LABELS.TIMER} handles={handles}>
+      <div>
+        <Label>
+          {FIELD_LABELS.DELAY}
+          <Input type="number" value={delay} onChange={(e) => setDelay(e.target.value)} />
+        </Label>
+      </div>
+    </BaseNode>
+  );
+};
