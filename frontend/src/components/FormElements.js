@@ -24,8 +24,7 @@ export const AutoResizeTextarea = ({ value, onChange, ...props }) => {
     return (
         <div className="relative w-full mt-1">
             <div
-                className="w-full px-2.5 py-2 border border-transparent text-sm whitespace-pre-wrap break-words invisible"
-                style={{ minHeight: '40px' }}
+                className="w-full px-2.5 py-2 border border-transparent text-sm whitespace-pre-wrap break-words invisible min-h-[40px]"
                 aria-hidden="true"
             >
                 {value + ' '}

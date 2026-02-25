@@ -78,3 +78,15 @@ export const TEXT_NODE_STYLE = {
     minWidth: 250,
     maxWidth: 500
 };
+
+export const DRAGGABLE_NODES = [
+    { type: NODE_TYPES.CUSTOM_INPUT, label: NODE_LABELS.INPUT },
+    { type: NODE_TYPES.LLM, label: NODE_LABELS.LLM },
+    { type: NODE_TYPES.CUSTOM_OUTPUT, label: NODE_LABELS.OUTPUT },
+    { type: NODE_TYPES.TEXT, label: NODE_LABELS.TEXT },
+    { type: NODE_TYPES.API, label: NODE_LABELS.API },
+    { type: NODE_TYPES.TIMER, label: NODE_LABELS.TIMER },
+    { type: NODE_TYPES.COMBINE, label: NODE_LABELS.COMBINE },
+    { type: NODE_TYPES.FILTER, label: NODE_LABELS.FILTER },
+    { type: NODE_TYPES.DISPLAY, label: NODE_LABELS.DISPLAY }
+];

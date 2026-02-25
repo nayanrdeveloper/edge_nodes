@@ -1,9 +1,29 @@
+import { useStore } from './store';
+import { parsePipeline } from './services/api';
+import { API_CONSTANTS } from './constants/apiConstants';
+
 export const SubmitButton = () => {
+    const nodes = useStore((state) => state.nodes);
+    const edges = useStore((state) => state.edges);
+
+    const handleSubmit = async () => {
+        try {
+            const data = await parsePipeline(nodes, edges);
+
+            alert(`${API_CONSTANTS.MESSAGES.ALERT_SUCCESS_TITLE}` +
+                `${API_CONSTANTS.MESSAGES.ALERT_NUM_NODES}${data.num_nodes}\n` +
+                `${API_CONSTANTS.MESSAGES.ALERT_NUM_EDGES}${data.num_edges}\n` +
+                `${API_CONSTANTS.MESSAGES.ALERT_IS_DAG}${data.is_dag}`);
+        } catch (error) {
+            alert(API_CONSTANTS.MESSAGES.SUBMIT_ALERT_ERROR);
+        }
+    };
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <button
-                type="submit"
+                type="button"
+                onClick={handleSubmit}
                 style={{
                     backgroundColor: 'var(--border-focus)',
                     color: '#fff',
@@ -33,8 +53,8 @@ export const SubmitButton = () => {
                     e.currentTarget.style.transform = 'translateY(-1px)';
                 }}
             >
-                Submit Flow
+                {API_CONSTANTS.UI.SUBMIT_BUTTON_TEXT}
             </button>
         </div>
     );
-}
+};

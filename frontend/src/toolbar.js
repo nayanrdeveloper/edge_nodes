@@ -1,28 +1,15 @@
 import { DraggableNode } from './draggableNode';
+import { DRAGGABLE_NODES } from './constants/nodeConstants';
 
 export const PipelineToolbar = () => {
 
     return (
-        <div style={{
-            padding: '20px',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            backdropFilter: 'blur(12px)',
-            borderRadius: 'var(--radius-lg)',
-            boxShadow: 'var(--shadow-float)',
-            border: '1px solid var(--border-color)',
-            width: '240px'
-        }}>
-            <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', fontWeight: '600', color: 'var(--text-main)' }}>Components</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <DraggableNode type='customInput' label='Input' />
-                <DraggableNode type='llm' label='LLM' />
-                <DraggableNode type='customOutput' label='Output' />
-                <DraggableNode type='text' label='Text' />
-                <DraggableNode type='api' label='API Request' />
-                <DraggableNode type='timer' label='Timer' />
-                <DraggableNode type='combine' label='Combine' />
-                <DraggableNode type='filter' label='Filter' />
-                <DraggableNode type='display' label='Display' />
+        <div className="p-5 bg-white/80 backdrop-blur-md rounded-xl shadow-xl border border-slate-200 w-[240px]">
+            <h3 className="m-0 mb-4 text-base font-semibold text-slate-800">Components</h3>
+            <div className="flex flex-col gap-2.5">
+                {DRAGGABLE_NODES.map((node) => (
+                    <DraggableNode key={node.type} type={node.type} label={node.label} />
+                ))}
             </div>
         </div>
     );

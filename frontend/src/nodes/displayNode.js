@@ -6,10 +6,10 @@ export const DisplayNode = ({ id, data }) => {
     const handles = getDisplayNodeHandles(id);
 
     return (
-        <BaseNode id={id} label={NODE_LABELS.DISPLAY} handles={handles} style={{ backgroundColor: '#f0f8ff' }}>
-            <div style={{ padding: '10px', minHeight: '30px', backgroundColor: '#fff', border: '1px solid #ddd' }}>
-                <em>{UI_TEXT.NO_DATA}</em>
+        <BaseNode id={id} label={NODE_LABELS.DISPLAY} handles={handles} className="bg-[#f0f8ff]">
+            <div className="p-2.5 min-h-[30px] bg-white border border-slate-200 rounded-md">
+                <em className="text-slate-500">{UI_TEXT.NO_DATA}</em>
             </div>
         </BaseNode>
     );
-}
+};

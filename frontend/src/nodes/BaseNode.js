@@ -1,30 +1,14 @@
 import { Handle, Position } from 'reactflow';
 
-export const BaseNode = ({ id, label, handles = [], children, style = {} }) => {
+export const BaseNode = ({ id, label, handles = [], children, style = {}, className = "" }) => {
     return (
-        <div style={{
-            width: 250,
-            minHeight: 80,
-            backgroundColor: 'var(--bg-node)',
-            borderRadius: 'var(--radius-lg)',
-            boxShadow: 'var(--shadow-float)',
-            border: '1px solid var(--border-color)',
-            overflow: 'hidden',
-            transition: 'box-shadow var(--transition-fast)',
-            ...style
-        }}>
+        <div
+            className={`w-[250px] min-h-[80px] bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden transition-shadow duration-150 ${className}`}
+            style={style}
+        >
 
             {/* Node Header */}
-            <div style={{
-                background: 'var(--bg-node-header)',
-                padding: '12px 16px',
-                color: '#fff',
-                fontWeight: '600',
-                fontSize: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-            }}>
+            <div className="bg-indigo-400 px-4 py-3 text-white font-semibold text-sm flex items-center gap-2">
                 <span>{label}</span>
             </div>
 
@@ -35,19 +19,13 @@ export const BaseNode = ({ id, label, handles = [], children, style = {} }) => {
                     type="target"
                     position={handle.position || Position.Left}
                     id={handle.id}
-                    style={{
-                        ...handle.style,
-                        width: '12px',
-                        height: '12px',
-                        backgroundColor: '#f8fafc',
-                        border: '2px solid var(--border-focus)',
-                        borderRadius: '50%'
-                    }}
+                    className="!w-3 !h-3 !bg-slate-50 !border-2 !border-indigo-500 !rounded-full"
+                    style={{ ...handle.style }}
                 />
             ))}
 
             {/* Node Body Content */}
-            <div style={{ padding: '16px' }}>
+            <div className="p-4">
                 {children}
             </div>
 
@@ -57,15 +35,8 @@ export const BaseNode = ({ id, label, handles = [], children, style = {} }) => {
                     type="source"
                     position={handle.position || Position.Right}
                     id={handle.id}
-                    style={{
-                        ...handle.style,
-                        width: '12px',
-                        height: '12px',
-                        backgroundColor: 'var(--border-focus)',
-                        border: '2px solid #fff',
-                        borderRadius: '50%',
-                        boxShadow: '0 0 0 1px var(--border-focus)'
-                    }}
+                    className="!w-3 !h-3 !bg-indigo-500 !border-2 !border-white !rounded-full shadow-[0_0_0_1px_#6366f1]"
+                    style={{ ...handle.style }}
                 />
             ))}
         </div>
