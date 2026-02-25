@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
+import { Label, Input } from '../components/FormElements';
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
@@ -16,14 +17,14 @@ export const TextNode = ({ id, data }) => {
   return (
     <BaseNode id={id} label="Text" handles={handles}>
       <div>
-        <label>
+        <Label>
           Text:
-          <input
+          <Input
             type="text"
             value={currText}
             onChange={handleTextChange}
           />
-        </label>
+        </Label>
       </div>
     </BaseNode>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
+import { Label, Input, Select } from '../components/FormElements';
 
 export const APINode = ({ id, data }) => {
     const [url, setUrl] = useState(data?.url || 'https://api.example.com');
@@ -14,18 +15,18 @@ export const APINode = ({ id, data }) => {
     return (
         <BaseNode id={id} label="API Request" handles={handles}>
             <div>
-                <label>
+                <Label>
                     URL:
-                    <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
-                </label>
-                <label>
+                    <Input type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
+                </Label>
+                <Label>
                     Method:
-                    <select value={method} onChange={(e) => setMethod(e.target.value)}>
+                    <Select value={method} onChange={(e) => setMethod(e.target.value)}>
                         <option value="GET">GET</option>
                         <option value="POST">POST</option>
                         <option value="PUT">PUT</option>
-                    </select>
-                </label>
+                    </Select>
+                </Label>
             </div>
         </BaseNode>
     );

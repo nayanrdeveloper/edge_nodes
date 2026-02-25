@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
+import { Label, Input } from '../components/FormElements';
 
 export const TimerNode = ({ id, data }) => {
     const [delay, setDelay] = useState(data?.delay || 1000);
@@ -12,10 +13,10 @@ export const TimerNode = ({ id, data }) => {
     return (
         <BaseNode id={id} label="Timer" handles={handles}>
             <div>
-                <label>
+                <Label>
                     Delay (ms):
-                    <input type="number" value={delay} onChange={(e) => setDelay(e.target.value)} />
-                </label>
+                    <Input type="number" value={delay} onChange={(e) => setDelay(e.target.value)} />
+                </Label>
             </div>
         </BaseNode>
     );

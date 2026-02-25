@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
+import { Label, Input, Select } from '../components/FormElements';
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
@@ -21,21 +22,21 @@ export const InputNode = ({ id, data }) => {
   return (
     <BaseNode id={id} label="Input" handles={handles}>
       <div>
-        <label>
+        <Label>
           Name:
-          <input
+          <Input
             type="text"
             value={currName}
             onChange={handleNameChange}
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Type:
-          <select value={inputType} onChange={handleTypeChange}>
+          <Select value={inputType} onChange={handleTypeChange}>
             <option value="Text">Text</option>
             <option value="File">File</option>
-          </select>
-        </label>
+          </Select>
+        </Label>
       </div>
     </BaseNode>
   );
