@@ -1,5 +1,3 @@
-// displayNode.js
-
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
 
