@@ -72,3 +72,9 @@ export const UI_TEXT = {
 export const API_METHOD_OPTIONS = Object.values(API_METHODS);
 export const INPUT_TYPE_OPTIONS = Object.values(INPUT_TYPES);
 export const OUTPUT_TYPE_OPTIONS = Object.values(OUTPUT_TYPES);
+
+export const TEXT_NODE_STYLE = {
+    width: 'auto',
+    minWidth: 250,
+    maxWidth: 500
+};
