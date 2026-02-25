@@ -6,12 +6,10 @@ export const BaseNode = ({ id, label, handles = [], children, style = {}, classN
       className={`w-[250px] min-h-[80px] bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden transition-shadow duration-150 ${className}`}
       style={style}
     >
-      {/* Node Header */}
       <div className="bg-indigo-400 px-4 py-3 text-white font-semibold text-sm flex items-center gap-2">
         <span>{label}</span>
       </div>
 
-      {/* Handles Render Logic */}
       {handles
         .filter((h) => h.type === 'target')
         .map((handle, index) => (
@@ -25,7 +23,6 @@ export const BaseNode = ({ id, label, handles = [], children, style = {}, classN
           />
         ))}
 
-      {/* Node Body Content */}
       <div className="p-4">{children}</div>
 
       {handles
