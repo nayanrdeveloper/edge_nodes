@@ -1,17 +1,14 @@
-import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
+import { NODE_LABELS, UI_TEXT } from '../constants/nodeConstants';
+import { getCombineNodeHandles } from '../constants/nodeHandles';
 
 export const CombineNode = ({ id, data }) => {
-    const handles = [
-        { type: 'target', position: Position.Left, id: `${id}-input1`, style: { top: '33%' } },
-        { type: 'target', position: Position.Left, id: `${id}-input2`, style: { top: '66%' } },
-        { type: 'source', position: Position.Right, id: `${id}-combined` }
-    ];
+    const handles = getCombineNodeHandles(id);
 
     return (
-        <BaseNode id={id} label="Combine" handles={handles}>
+        <BaseNode id={id} label={NODE_LABELS.COMBINE} handles={handles}>
             <div>
-                <span>Concatenates two inputs.</span>
+                <span>{UI_TEXT.COMBINE_DESC}</span>
             </div>
         </BaseNode>
     );

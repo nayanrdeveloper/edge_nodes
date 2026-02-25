@@ -1,17 +1,14 @@
-import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
+import { NODE_LABELS, UI_TEXT } from '../constants/nodeConstants';
+import { getLLMNodeHandles } from '../constants/nodeHandles';
 
 export const LLMNode = ({ id, data }) => {
-  const handles = [
-    { type: 'target', position: Position.Left, id: `${id}-system`, style: { top: `${100 / 3}%` } },
-    { type: 'target', position: Position.Left, id: `${id}-prompt`, style: { top: `${200 / 3}%` } },
-    { type: 'source', position: Position.Right, id: `${id}-response` }
-  ];
+  const handles = getLLMNodeHandles(id);
 
   return (
-    <BaseNode id={id} label="LLM" handles={handles}>
+    <BaseNode id={id} label={NODE_LABELS.LLM} handles={handles}>
       <div>
-        <span>This is a LLM.</span>
+        <span>{UI_TEXT.LLM_DESC}</span>
       </div>
     </BaseNode>
   );

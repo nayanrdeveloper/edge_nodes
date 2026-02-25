@@ -1,21 +1,19 @@
 import { useState } from 'react';
-import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
 import { Label, Input } from '../components/FormElements';
+import { NODE_LABELS, DEFAULT_VALUES, FIELD_LABELS } from '../constants/nodeConstants';
+import { getFilterNodeHandles } from '../constants/nodeHandles';
 
 export const FilterNode = ({ id, data }) => {
-    const [condition, setCondition] = useState(data?.condition || '> 0');
+    const [condition, setCondition] = useState(data?.condition || DEFAULT_VALUES.FILTER_CONDITION);
 
-    const handles = [
-        { type: 'target', position: Position.Left, id: `${id}-input` },
-        { type: 'source', position: Position.Right, id: `${id}-filtered` }
-    ];
+    const handles = getFilterNodeHandles(id);
 
     return (
-        <BaseNode id={id} label="Filter" handles={handles}>
+        <BaseNode id={id} label={NODE_LABELS.FILTER} handles={handles}>
             <div>
                 <Label>
-                    Condition:
+                    {FIELD_LABELS.CONDITION}
                     <Input type="text" value={condition} onChange={(e) => setCondition(e.target.value)} />
                 </Label>
             </div>

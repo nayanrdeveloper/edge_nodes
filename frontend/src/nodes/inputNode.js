@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
 import { Label, Input, Select } from '../components/FormElements';
+import { NODE_LABELS, DEFAULT_VALUES, INPUT_TYPES, FIELD_LABELS, INPUT_TYPE_OPTIONS } from '../constants/nodeConstants';
+import { getInputNodeHandles } from '../constants/nodeHandles';
 
 export const InputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
-  const [inputType, setInputType] = useState(data.inputType || 'Text');
+  const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', DEFAULT_VALUES.INPUT_NAME_PREFIX));
+  const [inputType, setInputType] = useState(data.inputType || INPUT_TYPES.TEXT);
 
   const handleNameChange = (e) => {
     setCurrName(e.target.value);
@@ -15,15 +16,13 @@ export const InputNode = ({ id, data }) => {
     setInputType(e.target.value);
   };
 
-  const handles = [
-    { type: 'source', position: Position.Right, id: `${id}-value` }
-  ];
+  const handles = getInputNodeHandles(id);
 
   return (
-    <BaseNode id={id} label="Input" handles={handles}>
+    <BaseNode id={id} label={NODE_LABELS.INPUT} handles={handles}>
       <div>
         <Label>
-          Name:
+          {FIELD_LABELS.NAME}
           <Input
             type="text"
             value={currName}
@@ -31,10 +30,11 @@ export const InputNode = ({ id, data }) => {
           />
         </Label>
         <Label>
-          Type:
+          {FIELD_LABELS.TYPE}
           <Select value={inputType} onChange={handleTypeChange}>
-            <option value="Text">Text</option>
-            <option value="File">File</option>
+            {INPUT_TYPE_OPTIONS.map(opt => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
           </Select>
         </Label>
       </div>
